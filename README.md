@@ -31,7 +31,7 @@ then create a database in your mysql and replace these with your credentials
 
 in both file named "db.js" and "server.js" and also in "testdb.js" if you face connection problem to test/check for several times to make sure your db connection is working as well or not.
 
-then create a table names "tasks" with some dummy data in your database
+then create a table named "tasks" with some dummy data in your database
 
 ```
     CREATE TABLE IF NOT EXISTS `tasks` (
