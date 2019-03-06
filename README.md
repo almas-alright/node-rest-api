@@ -19,7 +19,7 @@ First download or clone this repository. Get in directory with terminal, then
     $ npm install
 ```
 
-then create a database in your mysql and replace these with you credentials 
+then create a database in your mysql and replace these with your credentials 
 
 ```
     host: "<your db host>",
