@@ -71,7 +71,7 @@ if it shows "Connected!" then come out and run "server.js"
     API server started on: 3000
 ```
 
-now check [http://localhost:3000/tasks](http://localhost:3000/tasks) with 
+now check [http://localhost:3000/tasks](http://localhost:3000/tasks) with [postman](https://www.getpostman.com/)
 
 ```
     [
