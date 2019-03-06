@@ -1,0 +1,27 @@
+{
+  "name": "npm_rest_api",
+  "version": "1.0.0",
+  "description": "Api for Mobile app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/almas-alright/Node-REST-Api.git"
+  },
+  "author": "Almas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/almas-alright/Node-REST-Api/issues"
+  },
+  "homepage": "https://github.com/almas-alright/Node-REST-Api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
