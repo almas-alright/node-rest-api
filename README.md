@@ -49,10 +49,10 @@ and insert some dummy data
 
 ```
     INSERT INTO `tasks` (`id`, `task`, `status`, `created_at`) VALUES
-    (1, 'Take Photo', 1, '2016-04-10 23:50:40'),
-    (2, 'Wash Your Bike', 1, '2016-04-10 23:50:40'),
-    (3, 'Sell Camera', 1, '2016-04-10 23:50:40'),
-    (4, 'Buy Lenses', 1, '2016-04-10 23:50:40'),
+    (1, 'Take Photo', 1, '2019-03-06 10:45:48'),
+    (2, 'Wash Your Bike', 1, '2019-03-06 10:45:48'),
+    (3, 'Sell Camera', 1, '2019-03-06 10:45:48'),
+    (4, 'Buy Lenses', 1, '2019-03-06 10:45:48'),
     (5, 'Cut Your Boss Hair', 1, '2016-04-10 23:50:50');
 ```
 
@@ -79,31 +79,31 @@ now check [http://localhost:3000/tasks](http://localhost:3000/tasks) with [postm
            "id": 1,
            "task": "Take Photo",
            "status": 1,
-           "created_at": "2016-04-10T17:50:40.000Z"
+           "created_at": "2019-03-06T10:45:51.000Z"
        },
        {
            "id": 2,
            "task": "Wash Your Bike",
            "status": 1,
-           "created_at": "2016-04-10T17:50:40.000Z"
+           "created_at": "2019-03-06T10:45:51.000Z"
        },
        {
            "id": 3,
            "task": "Sell Camera",
            "status": 1,
-           "created_at": "2016-04-10T17:50:40.000Z"
+           "created_at": "2019-03-06T10:45:51.000Z"
        },
        {
            "id": 4,
            "task": "Buy Lenses",
            "status": 1,
-           "created_at": "2016-04-10T17:50:40.000Z"
+           "created_at": "2019-03-06T10:45:51.000Z"
        },
        {
            "id": 5,
            "task": "Cut Your Boss Hair",
            "status": 1,
-           "created_at": "2016-04-10T17:50:50.000Z"
+           "created_at": "2019-03-06T10:45:51.000Z"
        }
     ]
    ```
