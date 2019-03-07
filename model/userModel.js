@@ -22,8 +22,20 @@ User.createUser = function(newUser, result) {
         }
     });
 };
-User.getUserById = function(credentials, result) {
-    sql.query("Select user from users where status = 1 AND name = ? AND password = ?", credentials, function (err, res) {
+User.getUserById = function(userID, result) {
+    sql.query("Select * from users where id = ? ", userID, function (err, res) {
+        if(err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else{
+            result(null, res);
+
+        }
+    });
+};
+User.login = function(credentials, result) {
+    sql.query("Select * FROM users WHERE (status = ? and email = ?)", credentials, function (err, res) {
         if(err) {
             console.log("error: ", err);
             result(err, null);
