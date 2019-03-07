@@ -1,9 +1,8 @@
-const express = require('express'),
-    app = express(),
-    bodyParser = require('body-parser');
-port = process.env.PORT || 3000;
-
-
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const port = process.env.PORT || 3000;
+const jwt = require('jsonwebtoken');
 const mysql = require('mysql');
 // connection configurations
 const mc = mysql.createConnection({
