@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(app) {
-    var path = require('path');
+    const path = require('path');
     app.get('/', function(req, res) {
         res.sendFile(path.join(__dirname +'/../views/front/index.html'));
     });
@@ -8,7 +8,7 @@ module.exports = function(app) {
     var todoList = require('../controllers/appController');
     var users = require('../controllers/userController');
     // todoList Routes
-    app.route('/tasks')
+    app.route('/tasks', verifyToken)
         .get(todoList.list_all_tasks)
         .post(todoList.create_a_task);
 
@@ -25,3 +25,27 @@ module.exports = function(app) {
 
 
 };
+
+// FORMAT OF TOKEN
+// Authorization: Bearer <access_token>
+
+// Verify Token
+function verifyToken(req, res, next) {
+    // Get auth header value
+    const bearerHeader = req.headers['authorization'];
+    // Check if bearer is undefined
+    if(typeof bearerHeader !== 'undefined') {
+        // Split at the space
+        const bearer = bearerHeader.split(' ');
+        // Get token from array
+        const bearerToken = bearer[1];
+        // Set the token
+        req.token = bearerToken;
+        // Next middleware
+        next();
+    } else {
+        // Forbidden
+        res.sendStatus(403);
+    }
+
+}
