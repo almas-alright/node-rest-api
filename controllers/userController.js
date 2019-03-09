@@ -1,7 +1,7 @@
 'use strict';
 
 var User = require('../model/userModel.js');
-
+var jwt = require('jsonwebtoken');
 exports.list_all_users = function(req, res) {
     User.getAllUser(function(err, user) {
 
@@ -52,7 +52,17 @@ exports.login_a_user = function(req, res) {
         } else {
             if(user.length){
                 if(password === user[0].password){
-                    res.json({id:user[0].id,name:user[0].name, email:user[0].email, message:"Login Success"});
+                    // res.json({id:user[0].id,name:user[0].name, email:user[0].email, message:"Login Success"});
+                    var uxr = {id:user[0].id, email: user[0].email}
+                    jwt.sign(
+                        {uxr},
+                        process.env.HASH_SECRET,
+                        // { expiresIn: '360s' },
+                        (err, token) => {
+                        res.json({
+                            token
+                        });
+                    });
                 } else {
                     res.json({message:"Wrong Password"});
                 }
@@ -65,6 +75,18 @@ exports.login_a_user = function(req, res) {
     });
 };
 
+exports.verifyAD = (req,res) => {
+    jwt.verify(req.token, process.env.HASH_SECRET, (err, authData) => {
+        if(err) {
+            res.sendStatus(403);
+        } else {
+            res.json({
+                message: 'Post created...',
+                authData
+            });
+        }
+    });
+}
 
 exports.update_a_user = function(req, res) {
     User.updateById(req.params.userId, new User(req.body), function(err, user) {
