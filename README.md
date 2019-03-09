@@ -19,17 +19,27 @@ First download or clone this repository. Get in directory with terminal, then
     $ npm install
 ```
 
-then create a database in your mysql and replace these with your credentials 
+then create a .env modifying .env.example file
 
 ```
-    host: "<your db host>",
-    user: "<your db user>",
-    password: "<your db password>",
-    database: '<your db name>',
-    port: '<your db port>'
+    APP_NAME=Node REST API
+    APP_ENV=local
+    APP_KEY=
+    APP_DEBUG=true
+    APP_URL=http://localhost
+    
+    HASH_SECRET=something
+    
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=8889
+    DB_DATABASE=homestead
+    DB_USERNAME=homestead
+    DB_PASSWORD=secret
+    
+    PORT=3000
 ```
 
-in both file named "db.js" and "server.js" and also in "testdb.js" if you face connection problem to test/check for several times to make sure your db connection is working as well or not.
 
 then create a table named "tasks" with some dummy data in your database
 
@@ -69,6 +79,17 @@ if it shows "Connected!" then come out and run "server.js"
 ```
     $ node server.js
     API server started on: 3000
+```
+
+or you can use nodemon (check installed or not)
+nodemon will watch changes
+```
+$ npx nodemon
+[nodemon] 1.18.10
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching: *.*
+[nodemon] starting `node server.js`
+API server started on: 3000
 ```
 
 now check [http://localhost:3000/tasks](http://localhost:3000/tasks) with [postman](https://www.getpostman.com/)
