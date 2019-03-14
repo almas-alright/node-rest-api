@@ -2,7 +2,7 @@
 module.exports = function(app) {
     const path = require('path');
     const middleware = require('../middleware');
-    app.get('/', middleware.checkToken, function(req, res) {
+    app.get('/', function(req, res) {
         res.sendFile(path.join(__dirname +'/../views/front/index.html'));
     });
 
@@ -14,14 +14,15 @@ module.exports = function(app) {
         .post(todoList.create_a_task);
 
     app.route('/tasks/:taskId')
-        .get(todoList.read_a_task)
-        .put(todoList.update_a_task)
-        .delete(todoList.delete_a_task);
-    app.route('/register')
-        .post(users.create_a_user);
+        .get(middleware.checkToken, todoList.read_a_task)
+        .put(middleware.checkToken, todoList.update_a_task)
+        .delete(middleware.checkToken, todoList.delete_a_task);
 
-    app.route('/login')
-        .post(users.login_a_user);
+    app.post('/register', users.check_a_user, users.create_a_user)
+
+    app.post('/activate', users.activate_a_user)
+
+    app.post('/login', users.login_a_user);
 
     app.post('/vf', middleware.checkToken, users.verifyAD)
 

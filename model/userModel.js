@@ -35,7 +35,7 @@ User.getUserById = function(userID, result) {
     });
 };
 User.login = function(credentials, result) {
-    sql.query("Select * FROM users WHERE (status = ? and email = ?)", credentials, function (err, res) {
+    sql.query("Select * from users where email = ? ", credentials, function (err, res) {
         if(err) {
             console.log("error: ", err);
             result(err, null);
@@ -46,6 +46,20 @@ User.login = function(credentials, result) {
         }
     });
 };
+
+User.isExistsByEmail = function(email, result) {
+    sql.query("Select * FROM users WHERE email = ?", email, function (err, res) {
+        if(err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else{
+            result(null, res);
+
+        }
+    });
+};
+
 User.getAllUser = function(result) {
     sql.query("Select * from users", function (err, res) {
 
@@ -60,8 +74,9 @@ User.getAllUser = function(result) {
         }
     });
 };
-User.updateById = function(id, user, result){
-    sql.query("UPDATE users SET user = ? WHERE id = ?", [user.user, id], function (err, res) {
+
+User.updateById = function(status, id, result){
+    sql.query("UPDATE users SET status = ? WHERE id = ?", [status, id], function (err, res) {
         if(err) {
             console.log("error: ", err);
             result(null, err);
@@ -86,3 +101,5 @@ User.remove = function(id, result){
 };
 
 module.exports= User;
+
+// https://codeburst.io/node-js-mysql-and-promises-4c3be599909b
